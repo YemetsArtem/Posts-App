@@ -1,0 +1,45 @@
+#navbar-pushmenu {
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 0 10px;
+}
+
+.pushmenu {
+    /*this is the nav*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    width: 200px;
+    border-radius: 15px;
+    height: 100px;
+    background: rgba(68, 68, 68, 0.52);
+    transition: all 0.5s ease;
+}
+
+.pushmenu a {
+    display: block;
+    padding: 5px;
+    color: #f1f1f1;
+    font-size: 1.5em;
+    font-weight: 400;
+    text-decoration: none;
+
+}
+
+.pushmenu a:hover {
+    color: rgb(211, 0, 248);
+}
+
+.pushmenu-left {
+    bottom: -200px;
+    left: 20px;
+}
+
+.pushmenu-left.pushmenu-open {
+    bottom: 10px;
+    left: 10px;
+}
