@@ -145,11 +145,7 @@ main {
     }
 }
 
-.ID {
-    display: none;
-}
-
-.cards_container {
+.cards_container-main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -162,6 +158,11 @@ main {
     @media screen and (max-width: 1145px) {
         justify-content: space-around;
     }
+}
+
+.playlist-content {
+    font-size: 35px;
+    font-weight: 900;
 }
 
 .card,
@@ -238,7 +239,6 @@ main {
 /* HOTLIST */
 .hotlist-title,
 .main-title {
-    display: none;
     width: 100%;
     margin: 10px 0;
     letter-spacing: 5px;

@@ -1,12 +1,11 @@
 export default function putSearch() {
-  // $(".search-input").keyup(search);
-  $(".search-btn").click(search);
+  $(".search-input").keyup(search);
 
   function search() {
-    $.each($(".cards_container .card"), function() {
+    $.each($(".cards_container-main .card"), function() {
       if (
         $(this)
-          .html()
+          .text()
           .toLowerCase()
           .indexOf(
             $(".search-input")

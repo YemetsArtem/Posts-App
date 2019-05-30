@@ -46,12 +46,6 @@
             placeholder="Enter something: "
             aria-label="Search"
           />
-          <button
-            class="btn btn-outline-success my-2 my-sm-0 search-btn"
-            type="submit"
-          >
-            Search
-          </button>
         </form>
         <!-- NAVBAR LINKS -->
         <div
@@ -62,7 +56,7 @@
             <li class="nav-item active" id="homePage">
               <a class="nav-link" href="#">Home Page </a>
             </li>
-            <li class="nav-item active" id="myPlaylist">
+            <li class="nav-item disable" id="myPlaylist">
               <a class="nav-link" href="#">Playlist</a>
               <div class="items-amount"><p>0</p></div>
             </li>
@@ -171,7 +165,6 @@
       <!-- CARD TEAMPLATE start -->
       <div id="card-temp" hidden>
         <div class="card">
-          <div class="ID"></div>
           <h1 class="card-title"></h1>
           <img class="card_image" src="" alt="card" />
           <p class="card_description"></p>
@@ -194,9 +187,9 @@
         </div>
         <div class="cards-main">
           <div id="all" class="main-title">ALL CARDS</div>
-          <div class="cards_container"></div>
+          <div class="cards_container-main"></div>
         </div>
-        <div id="playlist" class="cards_container-playlist"></div>
+        <div id="playlist" class="cards_container-playlist"><p class="playlist-content">Playlist is empty.<p/></div>
       </section>
       <!-- ALL CONTAINERS end -->
     </main>

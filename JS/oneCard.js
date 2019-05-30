@@ -1,10 +1,9 @@
 // CREATE ONE CARD
-export default function createCard(array, db, dbPlaylist) {
+export default function createCard(array, dbPlaylist, db) {
   // Create elements
   const card = $("#card-temp")
     .find(".card")
     .clone(true, true);
-  const id = $(card).find(".ID");
   const title = $(card).find(".card-title");
   const image = $(card).find(".card_image");
   const description = $(card).find(".card_description");
@@ -13,7 +12,7 @@ export default function createCard(array, db, dbPlaylist) {
   const edit = $(card).find(".edit-button");
 
   // Add content to element
-  id.html(array.id);
+  card.id = array.id;
   title.html(array.title);
   image.attr("src", array.imgUrl);
   image.attr("alt", array.title);
@@ -25,7 +24,7 @@ export default function createCard(array, db, dbPlaylist) {
   //ADD FUNCTION TO EDIT BUTTON
   $(edit).on("click", function() {
     const modal = $("#modal-details").clone(true, true);
-    modal.modal("show");
+    $(modal).modal("show");
 
     modal
       .modal()
@@ -38,7 +37,7 @@ export default function createCard(array, db, dbPlaylist) {
 
         for (var keys in db) {
           for (var j = 0; j < db[keys].length; j++) {
-            if (db[keys][j]["id"] == id.html()) {
+            if (db[keys][j]["id"] == card.id) {
               if (modalTitle.val() !== "") {
                 db[keys][j]["title"] = modalTitle.val();
                 title.html(modalTitle.val());
@@ -73,6 +72,7 @@ export default function createCard(array, db, dbPlaylist) {
 
     // Create clone for card and it child elements
     const cardClone = card.clone(true, true);
+    cardClone.id = card.id;
     cardClone.removeClass();
     cardClone.addClass("card-clone");
     const authorContainerClone = $(cardClone).find(".card_author-container");
@@ -95,6 +95,11 @@ export default function createCard(array, db, dbPlaylist) {
 
       // Delete in UI
       cardClone.remove();
+
+      // Reload Playlist page
+      if (dbPlaylist.length === 0) {
+        $("#myPlaylist").click();
+      }
     });
 
     // Insert elements to card clone
@@ -103,22 +108,20 @@ export default function createCard(array, db, dbPlaylist) {
 
     // Function that check if created clone is already in playlist - delete this clone
     (function() {
-      var result = [];
+      var duplicateElements = [];
       next: for (var i = 0; i < dbPlaylist.length; i++) {
-        let cardCloneNumber = dbPlaylist[i];
-        let idNumber = $(cardCloneNumber)
-          .find(".ID")
-          .html();
-        for (var j = 0; j < result.length; j++) {
-          if (result[j] == idNumber) {
+        let idNumber = dbPlaylist[i].id;
+        for (var j = 0; j < duplicateElements.length; j++) {
+          if (duplicateElements[j] == idNumber) {
             dbPlaylist.splice(i, 1);
             continue next;
           }
         }
-        result.push(+idNumber);
+        duplicateElements.push(+idNumber);
       }
     })();
 
+    // Change nuber of elements in Playlist in our item amount
     $(".items-amount").html(dbPlaylist.length);
   });
 

@@ -235,10 +235,7 @@ main {
     main {
       padding: 60px 5%; } }
 
-.ID {
-  display: none; }
-
-.cards_container {
+.cards_container-main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -257,6 +254,10 @@ main {
     .cards_container-playlist {
       -ms-flex-pack: distribute;
       justify-content: space-around; } }
+
+.playlist-content {
+  font-size: 35px;
+  font-weight: 900; }
 
 .card,
 .card-clone {
@@ -334,7 +335,6 @@ main {
 /* HOTLIST */
 .hotlist-title,
 .main-title {
-  display: none;
   width: 100%;
   margin: 10px 0;
   letter-spacing: 5px;
