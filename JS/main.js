@@ -85,5 +85,6 @@ $(document).ready(function() {
     // CATCH ERRORS
     .catch(error => {
       console.error(error);
+      alert(error);
     });
 });
